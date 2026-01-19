@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.2.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NBomber.Sinks.Prometheus", "NBomber.Sinks.Prometheus.csproj", "{8057F63C-D9E8-2387-8242-18123AD2B78B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NBomber.Sinks.Otel", "NBomber.Sinks.Otel.csproj", "{B91FAD69-0EA1-F57B-E424-1CA76A5F3957}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -10,15 +10,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8057F63C-D9E8-2387-8242-18123AD2B78B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8057F63C-D9E8-2387-8242-18123AD2B78B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8057F63C-D9E8-2387-8242-18123AD2B78B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8057F63C-D9E8-2387-8242-18123AD2B78B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B91FAD69-0EA1-F57B-E424-1CA76A5F3957}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B91FAD69-0EA1-F57B-E424-1CA76A5F3957}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B91FAD69-0EA1-F57B-E424-1CA76A5F3957}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B91FAD69-0EA1-F57B-E424-1CA76A5F3957}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {8BC0402E-DF6A-43D5-BDF9-4EBA7E26E519}
+		SolutionGuid = {CC33BEB7-A8C6-43C7-8C32-E86B56699645}
 	EndGlobalSection
 EndGlobal

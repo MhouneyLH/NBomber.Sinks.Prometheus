@@ -1,0 +1,16 @@
+{
+  "NBomber.Sinks.Otel": {
+    "ExporterType": "File",
+    "FilePath": "metrics.log",
+    "CustomTags": [
+      {
+        "Key": "Environment",
+        "Value": "Local"
+      },
+      {
+        "Key": "Mode",
+        "Value": "Debug"
+      }
+    ]
+  }
+}

@@ -51,22 +51,48 @@ public sealed class OtelSink : IReportingSink
 
         if (_sinkConfig == OtelSinkConfig.Default)
         {
-            var configFromIConfig = infraConfig.Get<OtelSinkConfig>();
+            var sinkConfigSection = infraConfig.GetSection("NBomber.Sinks.Otel");
+            var configFromIConfig = sinkConfigSection.Get<OtelSinkConfig>();
             if (configFromIConfig is not null)
             {
                 _sinkConfig = configFromIConfig;
+            }
+            else
+            {
+                // Try getting from root if section doesn't exist
+                configFromIConfig = infraConfig.Get<OtelSinkConfig>();
+                if (configFromIConfig is not null)
+                {
+                    _sinkConfig = configFromIConfig;
+                }
             }
         }
 
         _context.Logger.Information("Initializing {SinkName} with configuration: {Config}", SinkName, _sinkConfig);
 
-        _meterProvider = Sdk.CreateMeterProviderBuilder()
-            .AddMeter(AppDiagnostics.Meter.Name)
-            .AddOtlpExporter(options =>
-            {
-                options.Endpoint = new Uri(_sinkConfig.OtlpExportEndpoint);
-            })
-            .Build();
+        var meterProviderBuilder = Sdk.CreateMeterProviderBuilder()
+            .AddMeter(AppDiagnostics.Meter.Name);
+
+        switch (_sinkConfig.ExporterType)
+        {
+            case ExporterTypes.Otlp:
+                meterProviderBuilder.AddOtlpExporter(options =>
+                {
+                    options.Endpoint = new Uri(_sinkConfig.OtlpExportEndpoint);
+                });
+                break;
+            case ExporterTypes.File:
+                if (string.IsNullOrWhiteSpace(_sinkConfig.FilePath))
+                {
+                    throw new InvalidOperationException("FilePath must be specified when using File exporter.");
+                }
+                meterProviderBuilder.AddReader(new PeriodicExportingMetricReader(new FileExporter(_sinkConfig.FilePath), exportIntervalMilliseconds: 5000));
+                break;
+            default:
+                throw new InvalidOperationException($"Unsupported exporter type: {_sinkConfig.ExporterType}");
+        }
+
+        _meterProvider = meterProviderBuilder.Build();
 
         _context.Logger.Information("Configured {SinkName} successfully.", SinkName);
 
@@ -100,7 +126,7 @@ public sealed class OtelSink : IReportingSink
         {
             MapCounterMetric(counter);
         }
-        
+
         foreach (var gauge in metrics.Gauges)
         {
             MapGaugeMetric(gauge);
@@ -207,7 +233,6 @@ public sealed class OtelSink : IReportingSink
         AppDiagnostics.SetSuccessfulRequestsCount(okStats.Request.Count, allTags);
         AppDiagnostics.SetFailedRequestsCount(failStats.Request.Count, allTags);
 
-        // looks bad, 'cause we're copying data from F# Histogram to C# Histogram
         AppDiagnostics.SuccessfulRequestLatency.Record(okStats.Latency.Percent50, allTags);
         AppDiagnostics.SuccessfulRequestLatency.Record(okStats.Latency.Percent75, allTags);
         AppDiagnostics.SuccessfulRequestLatency.Record(okStats.Latency.Percent95, allTags);

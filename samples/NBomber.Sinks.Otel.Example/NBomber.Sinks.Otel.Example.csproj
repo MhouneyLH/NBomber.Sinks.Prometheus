@@ -12,13 +12,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\NBomber.Sinks.Prometheus\NBomber.Sinks.Prometheus.csproj" />
+    <ProjectReference Include="..\..\src\NBomber.Sinks.Otel\NBomber.Sinks.Otel.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="infra-config.json">
+    <None Update="infra-config-file.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="infra-config-otlp.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+
 
 </Project>

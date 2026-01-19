@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.2.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NBomber.Sinks.Otel.Example", "NBomber.Sinks.Otel.Example.csproj", "{9F8FC505-1453-8BDD-F88F-12C062819EB1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NBomber.Sinks.Otel.Example", "NBomber.Sinks.Otel.Example.csproj", "{498B79F2-5BF4-1521-8F88-802C76FB45CC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -10,15 +10,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9F8FC505-1453-8BDD-F88F-12C062819EB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9F8FC505-1453-8BDD-F88F-12C062819EB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9F8FC505-1453-8BDD-F88F-12C062819EB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9F8FC505-1453-8BDD-F88F-12C062819EB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{498B79F2-5BF4-1521-8F88-802C76FB45CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{498B79F2-5BF4-1521-8F88-802C76FB45CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{498B79F2-5BF4-1521-8F88-802C76FB45CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{498B79F2-5BF4-1521-8F88-802C76FB45CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {D9272817-D3AB-42A6-8A69-6C19F3F0FBBA}
+		SolutionGuid = {CE3CA0AF-4911-4E28-B844-74A7B5394014}
 	EndGlobalSection
 EndGlobal

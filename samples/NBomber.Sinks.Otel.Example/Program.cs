@@ -16,7 +16,9 @@ var scenario = Scenario.Create("hello_world_scenario", async context =>
 
 NBomberRunner
     .RegisterScenarios(scenario)
+    .WithTestSuite("NBomber.Otel.Sink.Example")
+    .WithTestName("File.Export.Demo")
     .WithReportingInterval(TimeSpan.FromSeconds(5))
     .WithReportingSinks(new OtelSink())
-    .LoadInfraConfig("infra-config.json")
+    .LoadInfraConfig("infra-config-file.json")
     .Run();

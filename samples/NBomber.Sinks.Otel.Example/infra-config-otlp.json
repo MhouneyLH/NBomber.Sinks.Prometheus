@@ -1,5 +1,6 @@
 {
   "NBomber.Sinks.Otel": {
+    "ExporterType": "Otlp",
     "OtlpExportEndpoint": "http://localhost:9500",
     "CustomTags": [
       {
