@@ -4,12 +4,20 @@
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <PackageId>NBomber.Sinks.Otel</PackageId>
+    <Version>1.0.0</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-	<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
-	<RepositoryUrl>https://github.com/MhouneyLH/NBomber.Sinks.Otel</RepositoryUrl>
-	<Title>NBomber.Sinks.Otel</Title>
-	<Description>NBomber sink that exports metrics using OpenTelemetry.</Description>
-	<Authors>Lucas Hünniger</Authors>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <RepositoryUrl>https://github.com/MhouneyLH/NBomber.Sinks.Otel</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageProjectUrl>https://github.com/MhouneyLH/NBomber.Sinks.Otel</PackageProjectUrl>
+    <Title>NBomber.Sinks.Otel</Title>
+    <Description>NBomber sink that exports metrics using OpenTelemetry.</Description>
+    <Authors>Lucas Hünniger</Authors>
+    <PackageTags>nbomber load-testing opentelemetry metrics monitoring</PackageTags>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Copyright>Copyright © $(Authors) $([System.DateTime]::Now.Year)</Copyright>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
