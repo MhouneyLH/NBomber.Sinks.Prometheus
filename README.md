@@ -1,5 +1,10 @@
 # NBomber Otel Sink
 
+[![CI](https://github.com/MhouneyLH/NBomber.Sinks.Otel/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/MhouneyLH/NBomber.Sinks.Otel/actions/workflows/ci-cd.yml)
+[![NuGet Version](https://img.shields.io/nuget/v/NBomber.Sinks.Otel.svg)](https://www.nuget.org/packages/NBomber.Sinks.Otel/)
+[![NuGet Downloads](https://img.shields.io/nuget/dt/NBomber.Sinks.Otel.svg)](https://www.nuget.org/packages/NBomber.Sinks.Otel/)
+[![GitHub stars](https://img.shields.io/github/stars/MhouneyLH/NBomber.Sinks.Otel.svg)](https://github.com/MhouneyLH/NBomber.Sinks.Otel/stargazers)
+
 NBomber Otel Sink is a custom sink for NBomber load-testing framework. It integrates with OpenTelemetry, a popular observability standard, to export load test metrics to various backends, including Prometheus and others.
 
 **NBomber.Sinks.Otel** utilizes OpenTelemetry to export metrics based on the configured exporter type. During the execution of your load test, metrics are collected and exported according to the specified configuration.
