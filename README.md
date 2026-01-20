@@ -107,6 +107,12 @@ NBomberRunner
 
 For more code samples and examples, please refer to the [samples](samples) directory.
 
+## Known Issues & Limitations
+
+When using Rider and want or any other ide and try to start with a "green play button" it will not work when using `LoadInfraConfig`, please create Program.cs with Main method and run from terminal using `dotnet run`
+
+The export interval is currently fixed to the OtelExporter default of `60` seconds and cannot be changed via configuration (the only thing that can be changed is the reporting interval in NBomber using `WithReportingInterval` which is independent from the export interval)
+
 ## Contributing
 
 Contributions are welcome! If you find a bug or want to add a new feature, please open an issue or submit a pull request. Happy coding! 🎉

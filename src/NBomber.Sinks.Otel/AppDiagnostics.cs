@@ -6,23 +6,27 @@ namespace NBomber.Sinks.Otel;
 
 internal static class AppDiagnostics
 {
+    private const string MetricPrefix = "nbomber_";
+
+    private static string PrefixMetric(string name) => $"{MetricPrefix}{name}";
+
     internal static readonly string AssemblyVersion =
         typeof(AppDiagnostics).Assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion
         ?? typeof(AppDiagnostics).Assembly.GetName().Version!.ToString();
 
     internal static readonly Meter Meter = new("NBomber.Sinks.Otel", AssemblyVersion);
 
-    internal static readonly SynchronousGauge<int> NodeCount = new(Meter, "cluster.node_count", description: "Number of nodes involved in the test run");
-    internal static readonly SynchronousGauge<int> CpuCount = new(Meter, "cluster.node_cpu_count", description: "Number of CPU cores involved in the test run");
+    internal static readonly SynchronousGauge<int> NodeCount = new(Meter, PrefixMetric("cluster.node_count"), description: "Number of nodes involved in the test run");
+    internal static readonly SynchronousGauge<int> CpuCount = new(Meter, PrefixMetric("cluster.node_cpu_count"), description: "Number of CPU cores involved in the test run");
 
-    internal static readonly Histogram<double> SuccessfulRequestLatency = Meter.CreateHistogram<double>("ok.request.latency", description: "Latency for successful requests", unit: "ms");
-    internal static readonly Histogram<double> FailedRequestLatency = Meter.CreateHistogram<double>("fail.request.latency", description: "Latency for failed requests", unit: "ms");
+    internal static readonly Histogram<double> SuccessfulRequestLatency = Meter.CreateHistogram<double>(PrefixMetric("ok.request.latency"), description: "Latency for successful requests", unit: "ms");
+    internal static readonly Histogram<double> FailedRequestLatency = Meter.CreateHistogram<double>(PrefixMetric("fail.request.latency"), description: "Latency for failed requests", unit: "ms");
 
     internal static void SetUsersCount(double value, params KeyValuePair<string, object?>[]? tags)
     {
         const string name = "users.count";
 
-        Gauge(name, null, null, value, tags);
+        Gauge(PrefixMetric(name), null, null, value, tags);
     }
 
     internal static void SetTotalRps(double value, params KeyValuePair<string, object?>[]? tags)
@@ -31,7 +35,7 @@ internal static class AppDiagnostics
         const string unit = "req/s";
         const string description = "Number of requests per second for the step";
 
-        Gauge(name, unit, description, value, tags);
+        Gauge(PrefixMetric(name), unit, description, value, tags);
     }
 
     internal static void SetSuccessfulRps(double value, params KeyValuePair<string, object?>[]? tags)
@@ -40,7 +44,7 @@ internal static class AppDiagnostics
         const string unit = "req/s";
         const string description = "Number of successful requests per second for the step";
 
-        Gauge(name, unit, description, value, tags);
+        Gauge(PrefixMetric(name), unit, description, value, tags);
     }
 
     internal static void SetFailedRps(double value, params KeyValuePair<string, object?>[]? tags)
@@ -49,28 +53,28 @@ internal static class AppDiagnostics
         const string unit = "req/s";
         const string description = "Number of failed requests per second for a step";
 
-        Gauge(name, unit, description, value, tags);
+        Gauge(PrefixMetric(name), unit, description, value, tags);
     }
 
     internal static void SetTotalRequestsCount(double value, params KeyValuePair<string, object?>[]? tags)
     {
         const string name = "all.request.count";
 
-        Gauge(name, null, null, value, tags);
+        Gauge(PrefixMetric(name), null, null, value, tags);
     }
 
     internal static void SetSuccessfulRequestsCount(double value, KeyValuePair<string, object?>[] tags)
     {
         const string name = "ok.request.count";
 
-        Gauge(name, null, null, value, tags);
+        Gauge(PrefixMetric(name), null, null, value, tags);
     }
 
     internal static void SetFailedRequestsCount(double value, KeyValuePair<string, object?>[] tags)
     {
         const string name = "fail.request.count";
 
-        Gauge(name, null, null, value, tags);
+        Gauge(PrefixMetric(name), null, null, value, tags);
     }
 
 

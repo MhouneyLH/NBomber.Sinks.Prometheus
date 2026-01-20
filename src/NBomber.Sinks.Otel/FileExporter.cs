@@ -53,7 +53,6 @@ internal sealed class FileExporter : BaseExporter<Metric>
                                 sb.Append($"Gauge: {dataPoint.GetGaugeLastValueDouble()} | ");
                                 break;
                             case MetricType.Histogram:
-                                var histogram = dataPoint.GetHistogramBuckets();
                                 sb.Append($"Histogram - Count: {dataPoint.GetHistogramCount()}, Sum: {dataPoint.GetHistogramSum()} | ");
                                 break;
                             default:
